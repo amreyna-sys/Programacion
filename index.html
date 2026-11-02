@@ -1,0 +1,315 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menú del Restaurante</title>
+    <meta name="description" content="Las margaritas de Chilis."/>
+    <meta name="keywords" content="comida,carne,pollo,margaritas,chile,México"/>
+    <meta name="author" content="Aylin Michelle Reyna Gómez"/>
+    <meta name="copyright" content="Aylin Michelle Reyna Gómez"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container text-danger">
+
+    <header class="row align-items-center g-3">
+    <div class="logo col-12 col-md-6 text-center text-md-start">
+        <img src="logo.png" class="img-fluid" alt="Logo del restaurante" width="400" height="200" />
+        <h1>Restaurante Delicioso</h1>
+    </div>
+
+    <div class="col-12 col-md-6 d-flex flex-wrap justify-content-center gap-2">
+        <a href="#entradas"><button class="btn btn-primary">Entrada</button></a>
+        <a href="#platos"><button class="btn btn-secondary">Platos fuertes</button></a>
+        <a href="#postres"><button class="btn btn-success">Postres</button></a>
+        <a href="#contacto"><button class="btn btn-danger">Contacto</button></a>
+    </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav row row-cols-1 row-cols-sm-2 row-cols-lg-4 w-100">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </div>
+        </div>
+    </div>
+    </nav>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+        <img src="menu.png" class="d-block w-100 img-fluid" alt="Menú del restaurante">
+        </div>
+        <div class="carousel-item">
+        <img src="verdura.png" class="d-block w-100 img-fluid" alt="Verduras">
+        </div>
+        <div class="carousel-item">
+        <img src="cena.png" class="d-block w-100 img-fluid" alt="Cena">
+        </div>
+    </div>
+    </div>
+
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#modalExam">
+    Boton para abrir el modal
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalExam" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5">Título</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          ...
+          Contenido
+          ....
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-primary mt-3" role="alert">
+    Restaurante delicioso
+    Aquí tienes información adicional.
+  </div>
+
+  <div class="contenido-principal row g-3">
+    <section id="menu" class="col-12 col-lg-8">
+      <div class="accordion" id="accordion1">
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              ENTRADAS
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion1">
+            <div class="accordion-body">
+
+              <!-- ENTRADAS -->
+              <article id="entradas">
+                <h2>Entradas</h2>
+
+                <div class="item-menu">
+                  <h3>Ensalada César <span>$8.00</span></h3>
+                  <p>Lechuga romana, crotones, queso parmesano y aderezo césar.</p>
+                  <h4>Ingredientes</h4>
+                  <ul>
+                    <li>Lechuga romana</li>
+                    <li>Crutones</li>
+                    <li>Queso parmesano</li>
+                    <li>Aderezo César</li>
+                  </ul>
+                </div>
+
+                <div class="item-menu">
+                  <h3>Sopa del Día <span>$6.50</span></h3>
+                  <p>Pregunta por nuestra deliciosa sopa casera del día.</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              PLATOS FUERTES
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion1">
+            <div class="accordion-body">
+
+              <!-- PLATOS FUERTES -->
+              <article id="platos">
+                <h2>Platos Fuertes</h2>
+
+                <div class="item-menu">
+                  <h3>Lomo Salteado <span>$14.00</span></h3>
+                  <p>Carne salteada con cebolla, tomate y papas fritas.</p>
+                </div>
+
+                <div class="item-menu">
+                  <h3>Pollo a la Brasa <span>$13.00</span></h3>
+                  <p>Acompañado de papas doradas y ensalada fresca.</p>
+                  <h4>Preparación</h4>
+                  <ol>
+                    <li>Marinar el pollo.</li>
+                    <li>Colocar el pollo en la parrilla.</li>
+                    <li>Cocinar hasta que esté dorado.</li>
+                    <li>Servir con papas y ensalada.</li>
+                  </ol>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapsethree">
+              POSTRES
+            </button>
+          </h2>
+          <div id="collapsethree" class="accordion-collapse collapse" data-bs-parent="#accordion1">
+            <div class="accordion-body">
+
+              <!-- POSTRES -->
+              <article id="postres">
+                <h2>Postres</h2>
+
+                <div class="item-menu">
+                  <h3>Tarta de Queso <span>$5.00</span></h3>
+                  <p>Con base de galleta y coulis de frutos rojos.</p>
+                </div>
+
+                <div class="item-menu">
+                  <h3>Helado Artesanal <span>$4.50</span></h3>
+                  <p>Sabores variados de temporada.</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botón para activar el colapso -->
+      <button class="btn btn-warning mt-3" data-bs-toggle="collapse" data-bs-target="#collapse1">
+        Lista de precios
+      </button>
+
+      <!-- Contenido colapsable -->
+      <div class="collapse" id="collapse1">
+        <div class="card card-body">
+          <article id="tabla-precios">
+            <h2>Lista de precios</h2>
+
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Disponibilidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Ensalada César</td>
+                    <td>$8.00</td>
+                    <td>Disponible</td>
+                  </tr>
+                  <tr>
+                    <td>Sopa del Día</td>
+                    <td>$6.50</td>
+                    <td>Disponible</td>
+                  </tr>
+                  <tr>
+                    <td>Lomo Salteado</td>
+                    <td>$14.00</td>
+                    <td>Disponible</td>
+                  </tr>
+                  <tr>
+                    <td>Pollo a la Brasa</td>
+                    <td>$13.00</td>
+                    <td>Disponible</td>
+                  </tr>
+                  <tr>
+                    <td>Tarta de Queso</td>
+                    <td>$5.00</td>
+                    <td>Disponible</td>
+                  </tr>
+                  <tr>
+                    <td>Helado Artesanal</td>
+                    <td>$4.50</td>
+                    <td>Disponible</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </article>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- PROMOCIÓN -->
+    <aside class="col-12 col-lg-4">
+      <h4>Promoción del día</h4>
+      <p>¡Ordena un plato fuerte y recibe una bebida gratis!</p>
+    </aside>
+  </div>
+
+  <!-- TARJETAS RESPONSIVAS -->
+  <div class="row g-3 mt-3">
+
+    <div class="col-12 col-md-6 col-xl-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Título de la Tarjeta</h5>
+          <div class="card-text">
+            <p>Dirección: Calle Gourmet 123, Ciudad Sabor</p>
+            <p>Teléfono: +123 456 7890</p>
+            <p>Email: contacto@restaurantedelicioso.com</p>
+            Algunos textos rápidos para construir el contenido de la tarjeta y hacer que se vea bien.
+          </div>
+          <a href="https://www.pandaexpress.com.mx/es/locations" class="btn btn-primary">
+            Panda express
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl-4">
+      <div class="card h-100">
+        <img src="comida.jpg" class="card-img-top img-fluid" alt="Comida">
+        <div class="card-body">
+          <h5 class="card-title">Título de la Tarjeta</h5>
+          <p class="card-text">Texto de la tarjeta.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="d-flex flex-wrap gap-2 mt-3">
+    <a href="bar.html"><button class="btn btn-info">Visita nuestro Bar</button></a>
+    <a href="pedidos.html"><button class="btn btn-info">Haz tu pedido aquí</button></a>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer id="contacto" class="row mt-3">
+  </footer>
+
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+```

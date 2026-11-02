@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recreación educativa de una página de streaming">
+    <title>Netflix México | Recreación</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* PORTADA PRINCIPAL */
+        .hero {
+            min-height: 680px;
+            position: relative;
+            background:
+                linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.55) 50%, #000),
+                url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=2000&q=85")
+                center/cover no-repeat;
+            border-bottom: 7px solid #292929;
+        }
+
+        .navbar-custom {
+            padding: 25px 0;
+        }
+
+        .logo {
+            color: #e50914;
+            font-size: 2.3rem;
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-decoration: none;
+        }
+
+        .btn-netflix {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 9px 17px;
+        }
+
+        .btn-netflix:hover {
+            background-color: #b20710;
+            color: white;
+        }
+
+        .hero-content {
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px 20px 75px;
+        }
+
+        .hero-content h1 {
+            max-width: 850px;
+            font-size: clamp(2.1rem, 5vw, 3.8rem);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero-content h2 {
+            font-size: 1.3rem;
+            margin: 22px 0;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+        }
+
+        .email-form {
+            max-width: 650px;
+            width: 100%;
+        }
+
+        .email-form input {
+            min-height: 55px;
+            background: rgba(20,20,20,.8);
+            color: white;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        .email-form input::placeholder {
+            color: #ddd;
+        }
+
+        .email-form input:focus {
+            background: #222;
+            color: white;
+        }
+
+        .btn-start {
+            font-size: 1.2rem;
+            min-height: 55px;
+            white-space: nowrap;
+        }
+
+        /* SECCIONES */
+        .section {
+            padding: 45px 0;
+            border-bottom: 7px solid #292929;
+        }
+
+        .section h2 {
+            font-size: 1.7rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        /* TARJETAS DE TENDENCIAS */
+        .movie-card {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            transition: transform .25s;
+            background: #222;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.04);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .movie-number {
+            position: absolute;
+            bottom: -12px;
+            left: 8px;
+            font-size: 5rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #000;
+            -webkit-text-stroke: 2px white;
+            text-shadow: 0 0 8px black;
+        }
+
+        /* MOTIVOS PARA UNIRSE */
+        .reason-card {
+            height: 100%;
+            min-height: 240px;
+            padding: 25px 20px;
+            border-radius: 15px;
+            background: linear-gradient(145deg, #192044, #210e20);
+        }
+
+        .reason-card h3 {
+            font-size: 1.35rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            color: #ccc;
+        }
+
+        .reason-icon {
+            font-size: 2.4rem;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        /* PREGUNTAS FRECUENTES */
+        .accordion-item {
+            margin-bottom: 8px;
+            border: 0;
+            background: #2d2d2d;
+        }
+
+        .accordion-button {
+            background: #2d2d2d;
+            color: white;
+            font-size: 1.2rem;
+            padding: 24px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: #2d2d2d;
+            color: white;
+            box-shadow: none;
+        }
+
+        .accordion-button::after {
+            filter: brightness(0) invert(1);
+        }
+
+        .accordion-body {
+            background: #2d2d2d;
+            color: white;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            padding: 50px 0;
+            color: #aaa;
+        }
+
+        footer a {
+            display: inline-block;
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                min-height: 650px;
+            }
+
+            .hero-content {
+                min-height: 520px;
+            }
+
+            .hero-content h2 {
+                font-size: 1.1rem;
+            }
+
+            .movie-card {
+                height: 190px;
+            }
+
+            .section {
+                padding: 35px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PORTADA Y NAVEGACIÓN -->
+    <header class="hero">
+        <nav class="container navbar-custom d-flex
+                    justify-content-between align-items-center">
+            <a href="#" class="logo">NETFLIX</a>
+
+            <div class="d-flex align-items-center gap-3">
+                <select class="form-select form-select-sm bg-dark text-white"
+                        aria-label="Seleccionar idioma">
+                    <option>Español</option>
+                    <option>English</option>
+                </select>
+
+                <a href="https://www.netflix.com/mx/login"
+                   class="btn btn-netflix">Iniciar sesión</a>
+            </div>
+        </nav>
+
+        <div class="hero-content container">
+            <h1>Películas y series ilimitadas y mucho más</h1>
+
+            <h2>A partir de $139. Cancela cuando quieras.</h2>
+
+            <p>
+                ¿Quieres ver Netflix ya? Ingresa tu email para crear
+                una cuenta o reiniciar tu membresía.
+            </p>
+
+            <form class="email-form" id="emailForm">
+                <div class="row g-2">
+                    <div class="col-12 col-md">
+                        <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            placeholder="Correo electrónico"
+                            aria-label="Correo electrónico"
+                            required>
+                    </div>
+
+                    <div class="col-12 col-md-auto">
+                        <button class="btn btn-netflix btn-start w-100"
+                                type="submit">
+                            Comenzar ❯
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <p id="message" class="mt-3"></p>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- TENDENCIAS -->
+        <section class="section">
+            <div class="container">
+                <h2>Tendencias</h2>
+
+                <div class="row g-3">
+
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                                 alt="Película de drama">
+                            <span class="movie-number">1</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg"
+                                 alt="Película de acción">
+                            <span class="movie-number">2</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                                 alt="Película de aventura">
+                            <span class="movie-number">3</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/qhb1qOilapbapxWQn9jtRCMwXJF.jpg"
+                                 alt="Película de fantasía">
+                            <span class="movie-number">4</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-4 col-lg">
+                        <div class="movie-card">
+                            <img src="https://image.tmdb.org/t/p/w500/2E2WTX0TJEflAged6kzErwqX1kt.jpg"
+                                 alt="Película de ciencia ficción">
+                            <span class="movie-number">5</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MOTIVOS PARA UNIRSE -->
+        <section class="section">
+            <div class="container">
+                <h2>Más motivos para unirte</h2>
+
+                <div class="row g-3">
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="reason-card">
+                            <h3>Disfruta en tu TV</h3>
+                            <p>
+                                Ve tus series y películas en smart TV,
+                                consolas, Chromecast y más dispositivos.
+                            </p>
+                            <div class="reason-icon">📺</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="reason-card">
+                            <h3>Descarga tus series</h3>
+                            <p>
+                                Guarda tus títulos favoritos para
+                                disfrutarlos sin conexión.
+                            </p>
+                            <div class="reason-icon">⬇️</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="reason-card">
+                            <h3>Disfruta donde quieras</h3>
+                            <p>
+                                Mira contenido en tu teléfono,
+                                tableta, computadora o televisión.
+                            </p>
+                            <div class="reason-icon">📱</div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="reason-card">
+                            <h3>Perfiles para niños</h3>
+                            <p>
+                                Crea un espacio especial para que
+                                los más pequeños disfruten contenido familiar.
+                            </p>
+                            <div class="reason-icon">🎈</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PREGUNTAS FRECUENTES -->
+        <section class="section">
+            <div class="container">
+                <h2>Preguntas frecuentes</h2>
+
+                <div class="accordion" id="faq">
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                ¿Qué es Netflix?
+                            </button>
+                        </h3>
+                        <div id="faq1"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                Netflix es un servicio de streaming que
+                                ofrece películas, series y documentales
+                                para disfrutar en diferentes dispositivos.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                ¿Cuánto cuesta Netflix?
+                            </button>
+                        </h3>
+                        <div id="faq2"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                El precio depende del plan elegido.
+                                Consulta los precios actuales en el sitio
+                                oficial de Netflix México.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                ¿Dónde puedo ver Netflix?
+                            </button>
+                        </h3>
+                        <div id="faq3"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                Puedes disfrutar de Netflix en televisores,
+                                celulares, tabletas, computadoras y otros
+                                dispositivos compatibles.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                ¿Cómo cancelo mi membresía?
+                            </button>
+                        </h3>
+                        <div id="faq4"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                La cancelación se gestiona desde la cuenta
+                                del usuario en el sitio oficial, según las
+                                condiciones de su membresía.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                ¿Qué puedo ver en Netflix?
+                            </button>
+                        </h3>
+                        <div id="faq5"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                Hay películas, series, documentales,
+                                anime y contenido de distintos géneros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                ¿Netflix tiene contenido para niños?
+                            </button>
+                        </h3>
+                        <div id="faq6"
+                             class="accordion-collapse collapse"
+                             data-bs-parent="#faq">
+                            <div class="accordion-body">
+                                Sí. Cuenta con perfiles infantiles y
+                                opciones de control parental.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEGUNDO FORMULARIO -->
+        <section class="section">
+            <div class="container text-center">
+                <p>
+                    ¿Quieres ver Netflix ya? Ingresa tu email para
+                    crear una cuenta o reiniciar tu membresía.
+                </p>
+
+                <form class="email-form mx-auto" id="emailForm2">
+                    <div class="row g-2">
+                        <div class="col-12 col-md">
+                            <input type="email"
+                                   class="form-control"
+                                   placeholder="Correo electrónico"
+                                   aria-label="Correo electrónico"
+                                   required>
+                        </div>
+                        <div class="col-12 col-md-auto">
+                            <button type="submit"
+                                    class="btn btn-netflix btn-start w-100">
+                                Comenzar ❯
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="container">
+            <p>¿Preguntas? Visita el sitio oficial de Netflix.</p>
+
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <a href="https://help.netflix.com/es">Centro de ayuda</a>
+                    <a href="https://www.netflix.com/mx/">Cuenta</a>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <a href="https://help.netflix.com/es">Preguntas frecuentes</a>
+                    <a href="https://help.netflix.com/es">Contacto</a>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <a href="https://help.netflix.com/es">Privacidad</a>
+                    <a href="https://help.netflix.com/es">Avisos legales</a>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <a href="https://www.netflix.com/mx/">Netflix México</a>
+                </div>
+            </div>
+
+            <p class="mt-4">Recreación educativa no oficial de Netflix.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT DE BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script>
+        // Simula la respuesta de los formularios.
+        // No crea cuentas ni envía información a Netflix.
+        function configurarFormulario(formulario) {
+            formulario.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const correo = formulario.querySelector("input[type='email']");
+
+                if (correo.checkValidity()) {
+                    alert(
+                        "Formulario de demostración. " +
+                        "No se creó ninguna cuenta de Netflix."
+                    );
+                } else {
+                    correo.reportValidity();
+                }
+            });
+        }
+
+        configurarFormulario(document.getElementById("emailForm"));
+        configurarFormulario(document.getElementById("emailForm2"));
+    </script>
+
+</body>
+</html>
